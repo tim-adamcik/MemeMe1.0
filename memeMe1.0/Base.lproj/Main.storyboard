@@ -16,18 +16,27 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gev-gs-owH">
-                                <rect key="frame" x="0.0" y="1300" width="0.0" height="44"/>
+                                <rect key="frame" x="0.0" y="818" width="414" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="oJy-Ds-Shc"/>
                                 </constraints>
                                 <items>
-                                    <barButtonItem title="Item" id="D7s-e8-Yzq"/>
+                                    <barButtonItem title="Pick" id="D7s-e8-Yzq">
+                                        <connections>
+                                            <action selector="pickImageFromLibrary:" destination="BYZ-38-t0r" id="YkO-Pp-FsW"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem title="Item" image="camera.fill" catalog="system" id="ZA6-m1-OMu" userLabel="camera button">
+                                        <connections>
+                                            <action selector="pickImageFromCamera:" destination="BYZ-38-t0r" id="AbI-E9-deT"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </items>
                             </toolbar>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="BS4-nn-Fmf">
                                 <rect key="frame" x="20" y="64" width="374" height="726"/>
                             </imageView>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="TOP" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oAs-7v-J1s">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="TOP" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oAs-7v-J1s" userLabel="Top text Field">
                                 <rect key="frame" x="20" y="94" width="374" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="9Tm-L2-IrJ"/>
@@ -36,7 +45,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="BOTTOM" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IVy-GP-dzx">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="BOTTOM" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IVy-GP-dzx" userLabel="Bottom text field">
                                 <rect key="frame" x="20" y="731" width="374" height="37"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="37" id="EHC-CA-Gi6"/>
@@ -62,10 +71,19 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="bottomTextField" destination="IVy-GP-dzx" id="mHd-XW-ceY"/>
+                        <outlet property="cameraButton" destination="ZA6-m1-OMu" id="RRw-2K-qxs"/>
+                        <outlet property="imagePickerView" destination="BS4-nn-Fmf" id="jlV-iZ-v0X"/>
+                        <outlet property="topTextField" destination="oAs-7v-J1s" id="Vtz-hc-Mpi"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="137.68115942028987" y="117.85714285714285"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="camera.fill" catalog="system" width="64" height="48"/>
+    </resources>
 </document>
