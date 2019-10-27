@@ -24,11 +24,40 @@
                                     <barButtonItem title="Item" id="D7s-e8-Yzq"/>
                                 </items>
                             </toolbar>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="BS4-nn-Fmf">
+                                <rect key="frame" x="20" y="64" width="374" height="726"/>
+                            </imageView>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="TOP" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oAs-7v-J1s">
+                                <rect key="frame" x="20" y="94" width="374" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="9Tm-L2-IrJ"/>
+                                    <constraint firstAttribute="width" constant="374" id="chN-3u-Yyf"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="BOTTOM" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IVy-GP-dzx">
+                                <rect key="frame" x="20" y="731" width="374" height="37"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="37" id="EHC-CA-Gi6"/>
+                                    <constraint firstAttribute="width" constant="374" id="tl6-c1-v0e"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="oAs-7v-J1s" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="4Ar-sG-JYh"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="BS4-nn-Fmf" secondAttribute="trailing" constant="20" id="DPh-Ca-4Vd"/>
+                            <constraint firstItem="IVy-GP-dzx" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="K4j-vC-wvj"/>
                             <constraint firstItem="Gev-gs-owH" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="KEz-1w-8h2"/>
                             <constraint firstItem="Gev-gs-owH" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="LX7-9Z-3xL"/>
+                            <constraint firstItem="oAs-7v-J1s" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="50" id="MQe-Qf-vhX"/>
+                            <constraint firstItem="Gev-gs-owH" firstAttribute="top" secondItem="IVy-GP-dzx" secondAttribute="bottom" constant="50" id="RMa-Xm-oMt"/>
+                            <constraint firstItem="BS4-nn-Fmf" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="U6y-d0-oKQ"/>
+                            <constraint firstItem="Gev-gs-owH" firstAttribute="top" secondItem="BS4-nn-Fmf" secondAttribute="bottom" constant="28" id="XV7-ce-2vS"/>
+                            <constraint firstItem="BS4-nn-Fmf" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="nKz-dA-uLa"/>
                             <constraint firstItem="Gev-gs-owH" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="zN4-67-LXG"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -36,7 +65,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="139" y="118"/>
+            <point key="canvasLocation" x="137.68115942028987" y="117.85714285714285"/>
         </scene>
     </scenes>
 </document>
