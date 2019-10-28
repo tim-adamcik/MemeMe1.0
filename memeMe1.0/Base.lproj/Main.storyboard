@@ -37,18 +37,18 @@
                                 <rect key="frame" x="20" y="64" width="374" height="726"/>
                             </imageView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="TOP" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oAs-7v-J1s" userLabel="Top text Field">
-                                <rect key="frame" x="20" y="94" width="374" height="40"/>
+                                <rect key="frame" x="20" y="94" width="374" height="44"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="9Tm-L2-IrJ"/>
+                                    <constraint firstAttribute="height" constant="44" id="9Tm-L2-IrJ"/>
                                     <constraint firstAttribute="width" constant="374" id="chN-3u-Yyf"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="BOTTOM" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IVy-GP-dzx" userLabel="Bottom text field">
-                                <rect key="frame" x="20" y="731" width="374" height="37"/>
+                                <rect key="frame" x="20" y="724" width="374" height="44"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="37" id="EHC-CA-Gi6"/>
+                                    <constraint firstAttribute="height" constant="44" id="EHC-CA-Gi6"/>
                                     <constraint firstAttribute="width" constant="374" id="tl6-c1-v0e"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
