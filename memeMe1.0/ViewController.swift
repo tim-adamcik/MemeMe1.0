@@ -18,44 +18,53 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     let textFieldDel = TextFieldDelegate()
     
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        self.topTextField.delegate = textFieldDel
-        self.bottomTextField.delegate = textFieldDel
-        topTextField.text = "TOP"
-        bottomTextField.text = "BOTTOM"
+    fileprivate func configureFor(_ textField: UITextField, with placeholder: String) {
         
         let memeTextAttributes: [NSAttributedString.Key: Any] = [
-                 NSAttributedString.Key.strokeColor : UIColor.black ,
-                 NSAttributedString.Key.foregroundColor: UIColor.white ,
-                 NSAttributedString.Key.font: UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
-                 NSAttributedString.Key.strokeWidth: -3.0
-             ]
-             
-        topTextField.defaultTextAttributes = memeTextAttributes
-        bottomTextField.defaultTextAttributes = memeTextAttributes
-        topTextField.textAlignment = .center
-        bottomTextField.textAlignment = .center
-        topTextField.autocapitalizationType = .allCharacters
-        bottomTextField.autocapitalizationType = .allCharacters
-        topTextField.backgroundColor = UIColor.clear
-        bottomTextField.backgroundColor = UIColor.clear
-        topTextField.borderStyle = .none
-        bottomTextField.borderStyle = .none
+                   NSAttributedString.Key.strokeColor : UIColor.black ,
+                   NSAttributedString.Key.foregroundColor: UIColor.white ,
+                   NSAttributedString.Key.font: UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
+                   NSAttributedString.Key.strokeWidth: -3.0
+               ]
         
-        NotificationCenter.default.addObserver(self, selector: #selector(ViewController.keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(ViewController.keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
-        // Do any additional setup after loading the view.
+        textField.defaultTextAttributes = memeTextAttributes
+        textField.textAlignment = .center
+        textField.autocapitalizationType = .allCharacters
+        textField.backgroundColor = UIColor.clear
+        textField.borderStyle = .none
+        textField.delegate = textFieldDel
+        textField.text = placeholder
     }
     
-    @objc func keyboardWillShow(notification: NSNotification) {
-        guard let userInfo = notification.userInfo else {return}
-        guard let keyboardSize = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else {return}
+    fileprivate func handleKeyboard() {
+        
         let keyboardFrame = keyboardSize.cgRectValue
         if self.view.frame.origin.y == 0{
             self.view.frame.origin.y -= keyboardFrame.height
         }
+        if textField.text == TextField.top.rawValue {
+        }
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+       
+             NotificationCenter.default.addObserver(self, selector: #selector(ViewController.keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+             
+             NotificationCenter.default.addObserver(self, selector: #selector(ViewController.keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        
+        configureFor(topTextField, with: TextField.top.rawValue.uppercased())
+        configureFor(bottomTextField, with: TextField.bottom.rawValue.uppercased())
+        
+        handleKeyboard(topTextField)
+        handleKeyboard(bottomTextField)
+        // Do any additional setup after loading the view.
+    }
+    
+    @objc func keyboardWillShow(notification: NSNotification) {
+        guard let userInfo = notification.userInfo else { return }
+        guard let keyboardSize = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else { return }
+        handleKeyboard()
     }
     
     @objc func keyboardWillHide(notification: NSNotification) {
@@ -108,5 +117,36 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
           dismiss(animated: true, completion: nil)
       }
+    
+//    struct Meme {
+//        var topText: String
+//        var bottomText: String
+//        var originalImage: UIImage
+//        var memeImage: UIImage
+//    }
+//
+//    func save() {
+//            // Create the meme
+//            let meme = Meme(topText: topTextField.text!, bottomText: bottomTextField.text!, originalImage: imagePickerView.image!, memedImage: memedImage)
+//    }
+//
+//
+//    func generateMemedImage() -> UIImage {
+//
+//        // TODO: Hide toolbar and navbar
+//
+//        // Render view to an image
+//        UIGraphicsBeginImageContext(self.view.frame.size)
+//        view.drawHierarchy(in: self.view.frame, afterScreenUpdates: true)
+//
+//        let memedImage: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
+//        UIGraphicsEndImageContext()
+//
+//        // TODO: Show toolbar and navbar
+//
+//        return memedImage
+//    }
+    
+    
 }
 
