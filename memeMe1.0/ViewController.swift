@@ -36,15 +36,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         textField.text = placeholder
     }
     
-    fileprivate func handleKeyboard() {
-        
-        let keyboardFrame = keyboardSize.cgRectValue
-        if self.view.frame.origin.y == 0{
-            self.view.frame.origin.y -= keyboardFrame.height
-        }
-        if textField.text == TextField.top.rawValue {
-        }
-    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,22 +48,25 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         configureFor(topTextField, with: TextField.top.rawValue.uppercased())
         configureFor(bottomTextField, with: TextField.bottom.rawValue.uppercased())
         
-        handleKeyboard(topTextField)
-        handleKeyboard(bottomTextField)
+       
         // Do any additional setup after loading the view.
     }
     
-    @objc func keyboardWillShow(notification: NSNotification) {
-        guard let userInfo = notification.userInfo else { return }
-        guard let keyboardSize = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else { return }
-        handleKeyboard()
-    }
+  @objc func keyboardWillShow(notification: NSNotification) {
+           guard let userInfo = notification.userInfo else {return}
+           guard let keyboardSize = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else {return}
+           let keyboardFrame = keyboardSize.cgRectValue
+           if self.view.frame.origin.y == 0{
+               self.view.frame.origin.y -= keyboardFrame.height
+           }
+       }
+
+       @objc func keyboardWillHide(notification: NSNotification) {
+           if self.view.frame.origin.y != 0 {
+               self.view.frame.origin.y = 0
+           }
+       }
     
-    @objc func keyboardWillHide(notification: NSNotification) {
-        if self.view.frame.origin.y != 0 {
-            self.view.frame.origin.y = 0
-        }
-    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
