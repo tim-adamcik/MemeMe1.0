@@ -38,19 +38,25 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     
     
+    fileprivate func uiWork() {
+        configureFor(topTextField, with: TextField.top.rawValue.uppercased())
+        configureFor(bottomTextField, with: TextField.bottom.rawValue.uppercased())
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(save))
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
        
              NotificationCenter.default.addObserver(self, selector: #selector(ViewController.keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
              
              NotificationCenter.default.addObserver(self, selector: #selector(ViewController.keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        uiWork()
         
-        configureFor(topTextField, with: TextField.top.rawValue.uppercased())
-        configureFor(bottomTextField, with: TextField.bottom.rawValue.uppercased())
         
-       
-        // Do any additional setup after loading the view.
     }
+    
+    
     
     
   @objc func keyboardWillShow(notification: NSNotification) {
@@ -116,34 +122,29 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
           dismiss(animated: true, completion: nil)
       }
     
-//    struct Meme {
-//        var topText: String
-//        var bottomText: String
-//        var originalImage: UIImage
-//        var memeImage: UIImage
-//    }
-//
-//    func save() {
-//            // Create the meme
-//            let meme = Meme(topText: topTextField.text!, bottomText: bottomTextField.text!, originalImage: imagePickerView.image!, memedImage: memedImage)
-//    }
-//
-//
-//    func generateMemedImage() -> UIImage {
-//
-//        // TODO: Hide toolbar and navbar
-//
-//        // Render view to an image
-//        UIGraphicsBeginImageContext(self.view.frame.size)
-//        view.drawHierarchy(in: self.view.frame, afterScreenUpdates: true)
-//
-//        let memedImage: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
-//        UIGraphicsEndImageContext()
-//
-//        // TODO: Show toolbar and navbar
-//
-//        return memedImage
-//    }
+
+   @objc func save() {
+    let meme = Meme(topText: topTextField.text!, bottomText: bottomTextField.text!, originalImage: imagePickerView.image!, memedImage: generateMemedImage())
+    }
+
+
+    func generateMemedImage() -> UIImage {
+
+        navigationController?.isNavigationBarHidden = true
+        navigationController?.isToolbarHidden = true
+        
+        // Render view to an image
+        UIGraphicsBeginImageContext(self.view.frame.size)
+        view.drawHierarchy(in: self.view.frame, afterScreenUpdates: true)
+
+        let memedImage: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+
+        navigationController?.isNavigationBarHidden = false
+        navigationController?.isToolbarHidden = false
+
+        return memedImage
+    }
     
     
 }
