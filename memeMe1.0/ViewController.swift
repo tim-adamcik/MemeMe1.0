@@ -52,9 +52,11 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         // Do any additional setup after loading the view.
     }
     
+    
   @objc func keyboardWillShow(notification: NSNotification) {
            guard let userInfo = notification.userInfo else {return}
            guard let keyboardSize = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else {return}
+    if topTextField.isEditing { return }
            let keyboardFrame = keyboardSize.cgRectValue
            if self.view.frame.origin.y == 0{
                self.view.frame.origin.y -= keyboardFrame.height
@@ -66,6 +68,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
                self.view.frame.origin.y = 0
            }
        }
+    
     
     
     override func viewWillAppear(_ animated: Bool) {
