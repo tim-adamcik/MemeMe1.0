@@ -6,7 +6,7 @@
 //  Copyright © 2019 Timothy Adamcik. All rights reserved.
 //
 
-import Foundation
+
 import UIKit
 
 struct Meme {
