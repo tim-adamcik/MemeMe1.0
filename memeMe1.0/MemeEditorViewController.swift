@@ -14,9 +14,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     @IBOutlet weak var topTextField: UITextField!
     @IBOutlet weak var bottomTextField: UITextField!
     @IBOutlet weak var cameraButton: UIBarButtonItem!
-    
-
-    let button1 = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(save))
+    @IBOutlet weak var shareMemeButton: UIBarButtonItem!
     
     
     let textFieldDel = TextFieldDelegate()
@@ -47,7 +45,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         configureFor(topTextField, with: TextField.top.rawValue.uppercased())
         configureFor(bottomTextField, with: TextField.bottom.rawValue.uppercased());
                      
-        self.navigationItem.rightBarButtonItem = button1
+        shareMemeButton.isEnabled = imagePickerView.image != nil ? true : false
         
 }
     
@@ -58,12 +56,12 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
              
              NotificationCenter.default.addObserver(self, selector: #selector(MemeEditorViewController.keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
         uiWork()
+        
             
 //       button1.isEnabled = false
 //        if imagePickerView.image != nil {
 //            button1.isEnabled.toggle()
 //        }
-        button1.isEnabled = imagePickerView.image != nil ? true : false
     }
     
     
@@ -122,7 +120,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
                                   didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let image = info[.originalImage] as? UIImage {
                imagePickerView.image = image
-            button1.isEnabled.toggle()
+            shareMemeButton.isEnabled.toggle()
            }
            dismiss(animated: true, completion: nil)
        }
@@ -153,26 +151,35 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         return memedImage
     }
     
-    @objc func save() {
+    @IBAction func shareMeme(sender: Any) {
+        shareMemeButton.isEnabled = imagePickerView.image != nil ? true : false
+        
+        if shareMemeButton.isEnabled {
+            let memeImage = generateMemedImage()
+                  
+                  let controller = UIActivityViewController(activityItems: [memeImage],
+                                                            applicationActivities: nil)
+                  
+                  controller.completionWithItemsHandler = {
+                      (activity, success, items, error) in
+                      
+                      if success {
+                        self.save()
+                      }
+                  }
+                  present(controller, animated: true, completion: nil)
+        }
+    }
+    
+    func save() {
         let memeImage = generateMemedImage()
         
-        let controller = UIActivityViewController(activityItems: [memeImage],
-                                                  applicationActivities: nil)
-        
-        controller.completionWithItemsHandler = {
-            (activity, success, items, error) in
-            
-            if success {
-                let meme = Meme(topText: self.topTextField.text!,
-                                bottomText: self.bottomTextField.text!,
-                                originalImage: self.imagePickerView.image!,
-                                memedImage: memeImage)
-                let appDelegate = UIApplication.shared.delegate as! AppDelegate
-                appDelegate.memes.append(meme)
-            }
-        }
-        present(controller, animated: true, completion: nil)
-        
+        let meme = Meme(topText: self.topTextField.text!,
+                        bottomText: self.bottomTextField.text!,
+                        originalImage: self.imagePickerView.image!,
+                        memedImage: memeImage)
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate.memes.append(meme)
     }
-  
+    
 }

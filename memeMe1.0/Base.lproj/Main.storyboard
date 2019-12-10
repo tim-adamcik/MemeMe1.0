@@ -145,11 +145,17 @@
                     </view>
                     <navigationItem key="navigationItem" id="WZ5-pW-HT2">
                         <barButtonItem key="backBarButtonItem" title="Back" id="Wxf-GC-OxC"/>
+                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="action" id="G1L-zo-L5b" userLabel="Action Button">
+                            <connections>
+                                <action selector="shareMemeWithSender:" destination="BYZ-38-t0r" id="9Rl-1b-Y9W"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="bottomTextField" destination="IVy-GP-dzx" id="mHd-XW-ceY"/>
-                        <outlet property="cameraButton" destination="ZA6-m1-OMu" id="RRw-2K-qxs"/>
+                        <outlet property="cameraButton" destination="ZA6-m1-OMu" id="QND-go-nYV"/>
                         <outlet property="imagePickerView" destination="BS4-nn-Fmf" id="jlV-iZ-v0X"/>
+                        <outlet property="shareMemeButton" destination="G1L-zo-L5b" id="H6F-A7-DF7"/>
                         <outlet property="topTextField" destination="oAs-7v-J1s" id="Vtz-hc-Mpi"/>
                     </connections>
                 </viewController>
@@ -203,22 +209,30 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MemeCell" textLabel="mFx-HV-NjW" style="IBUITableViewCellStyleDefault" id="IgI-38-w96" customClass="MemeTableViewCell" customModule="memeMe1_0" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MemeCell" id="IgI-38-w96" customClass="MemeTableViewCell" customModule="memeMe1_0" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="IgI-38-w96" id="Of1-5B-cJj">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="mFx-HV-NjW">
-                                            <rect key="frame" x="20" y="0.0" width="374" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aff-WT-qx4">
+                                            <rect key="frame" x="134" y="11" width="260" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wgh-ox-NDX">
+                                            <rect key="frame" x="20" y="0.0" width="81" height="44"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </imageView>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="savedMemeImage" destination="wgh-ox-NDX" id="1dR-kk-iWn"/>
+                                    <outlet property="savedMemeLabel" destination="aff-WT-qx4" id="mD0-6A-bnq"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -236,7 +250,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SbC-Ft-KBQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="930" y="116"/>
+            <point key="canvasLocation" x="928.98550724637687" y="115.84821428571428"/>
         </scene>
     </scenes>
     <resources>
