@@ -11,6 +11,7 @@ import UIKit
 class SentMemeCollectionsViewController: UICollectionViewController {
     
     @IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
+    @IBOutlet weak var addNewMemeButton: UIBarButtonItem!
     
     
     var memes: [Meme]! {
@@ -18,6 +19,7 @@ class SentMemeCollectionsViewController: UICollectionViewController {
         let appDelegate = object as! AppDelegate
         return appDelegate.memes
     }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,7 +43,7 @@ class SentMemeCollectionsViewController: UICollectionViewController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MemeCollectionViewCell", for: indexPath) as! MemeCollectionViewCell
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MemeCollectionViewCell", for: indexPath) as? MemeCollectionViewCell else { return UICollectionViewCell() }
         let meme = self.memes[(indexPath as NSIndexPath).row]
         
         cell.collectionMemeCell?.image = meme.memedImage
@@ -56,4 +58,10 @@ class SentMemeCollectionsViewController: UICollectionViewController {
         
     }
     
+    @IBAction func createNewMeme() {
+    if let memeEditorNC = self.storyboard?.instantiateViewController(withIdentifier: "MemeEditorNC") as? UINavigationController {
+        memeEditorNC.modalPresentationStyle = .fullScreen
+        present(memeEditorNC, animated: false, completion: nil)
+        }
+    }
 }
