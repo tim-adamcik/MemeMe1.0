@@ -23,8 +23,12 @@ class SentMemeTableViewController: UIViewController, UITableViewDelegate, UITabl
        }
     
     override func viewDidLoad() {
-        super.viewDidAppear(true)
-        sentMemeTableView.reloadData()
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+            sentMemeTableView.reloadData()
     }
     
     
@@ -36,10 +40,14 @@ class SentMemeTableViewController: UIViewController, UITableViewDelegate, UITabl
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "MemeCell", for: indexPath) as? MemeTableViewCell else { return UITableViewCell()}
         let meme = self.memes[(indexPath as NSIndexPath).row]
         
-        cell.textLabel?.text = meme.topText + meme.bottomText
+        cell.textLabel?.text = meme.topText + " " + meme.bottomText
         cell.imageView?.image = meme.memedImage
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 100
     }
     
     
