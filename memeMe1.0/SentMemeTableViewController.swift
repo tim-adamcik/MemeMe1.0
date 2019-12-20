@@ -13,12 +13,19 @@ class SentMemeTableViewController: UIViewController, UITableViewDelegate, UITabl
     
     @IBOutlet weak var addNewMemeButton: UIBarButtonItem!
     
+    @IBOutlet weak var sentMemeTableView: UITableView!
+    
     var memes: [Meme]! {
            let object = UIApplication.shared.delegate
            let appDelegate = object as! AppDelegate
            return appDelegate.memes
         
        }
+    
+    override func viewDidLoad() {
+        super.viewDidAppear(true)
+        sentMemeTableView.reloadData()
+    }
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
