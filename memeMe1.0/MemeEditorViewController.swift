@@ -165,9 +165,17 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
                       
                       if success {
                         self.save()
+                        self.dismiss(animated: true, completion: nil)
                       }
                   }
                   present(controller, animated: true, completion: nil)
+        }
+    }
+    
+    @IBAction func cancelMemeEditor() {
+        if let tabVC = self.storyboard?.instantiateViewController(withIdentifier: "TabVC") as? UITabBarController {
+        tabVC.modalPresentationStyle = .fullScreen
+        present(tabVC, animated: false, completion: nil)
         }
     }
     

@@ -155,6 +155,11 @@
                     </view>
                     <navigationItem key="navigationItem" id="WZ5-pW-HT2">
                         <barButtonItem key="backBarButtonItem" title="Back" id="Wxf-GC-OxC"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="Ye3-gd-EhU">
+                            <connections>
+                                <action selector="cancelMemeEditor" destination="BYZ-38-t0r" id="stq-lr-R27"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" style="plain" systemItem="action" id="G1L-zo-L5b" userLabel="Action Button">
                             <connections>
                                 <action selector="shareMemeWithSender:" destination="BYZ-38-t0r" id="9Rl-1b-Y9W"/>
@@ -176,7 +181,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="ssm-hp-xtv">
             <objects>
-                <tabBarController id="Un3-B6-RAX" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="TabVC" id="Un3-B6-RAX" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="2sP-5v-r1F">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
