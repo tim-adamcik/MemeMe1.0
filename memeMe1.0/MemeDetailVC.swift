@@ -13,8 +13,20 @@ class MemeDetailVC: UIViewController {
     
     @IBOutlet weak var imageDetailView: UIImageView!
     
-    @IBOutlet weak var shareButton: UIBarButtonItem!
     
-    @IBOutlet weak var deleteButton: UIBarButtonItem!
+    
+    @IBAction func sendMemeDetail(_ sender: Any) {
+        
+        
+        let controller = UIActivityViewController
+        
+    }
+    
+    @IBAction func backButton(_ sender: Any) {
+        if let tabVC = self.storyboard?.instantiateViewController(withIdentifier: "TabVC") as? UITabBarController {
+        tabVC.modalPresentationStyle = .fullScreen
+        present(tabVC, animated: false, completion: nil)
+        }
+    }
     
 }

@@ -53,10 +53,12 @@ class SentMemeCollectionsViewController: UICollectionViewController {
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
        
-        let detailController = self.storyboard!.instantiateViewController(withIdentifier: "MemeEditorViewController") as! MemeEditorViewController
-        self.navigationController!.pushViewController(detailController, animated: true)
-        
+        if let memeDetailNC = self.storyboard?.instantiateViewController(identifier: "MemeDetailNC") as? UINavigationController {
+        memeDetailNC.modalPresentationStyle = .fullScreen
+        present(memeDetailNC, animated: false, completion: nil)
+        }
     }
+    
     
     @IBAction func createNewMeme() {
     if let memeEditorNC = self.storyboard?.instantiateViewController(withIdentifier: "MemeEditorNC") as? UINavigationController {

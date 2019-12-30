@@ -50,6 +50,13 @@ class SentMemeTableViewController: UIViewController, UITableViewDelegate, UITabl
         return 100
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let memeDetailNC = self.storyboard?.instantiateViewController(identifier: "MemeDetailNC") as? UINavigationController {
+            memeDetailNC.modalPresentationStyle = .fullScreen
+            present(memeDetailNC, animated: false, completion: nil)
+        }
+    }
+    
     
     @IBAction func createNewMeme() {
         if let memeEditorNC = self.storyboard?.instantiateViewController(withIdentifier: "MemeEditorNC") as? UINavigationController {

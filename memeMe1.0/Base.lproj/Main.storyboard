@@ -92,7 +92,7 @@
         <!--Navigation Controller-->
         <scene sceneID="IsJ-dn-weA">
             <objects>
-                <navigationController id="mZv-7I-C1D" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="MemeDetailNC" id="mZv-7I-C1D" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="pkt-pP-wti">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -127,13 +127,19 @@
                         <viewLayoutGuide key="safeArea" id="wz3-qs-BBI"/>
                     </view>
                     <navigationItem key="navigationItem" id="bj6-yS-N3m">
-                        <barButtonItem key="leftBarButtonItem" systemItem="trash" id="l1t-Bk-Sym"/>
-                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="WjN-0l-OnF"/>
+                        <barButtonItem key="leftBarButtonItem" image="arrow.left" catalog="system" id="WKr-MU-JdQ">
+                            <connections>
+                                <action selector="backButton:" destination="isn-6e-dOG" id="9G7-XP-SkA"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="WjN-0l-OnF">
+                            <connections>
+                                <action selector="sendMemeDetail:" destination="isn-6e-dOG" id="B01-qh-IQy"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="deleteButton" destination="l1t-Bk-Sym" id="mYd-nV-VU9"/>
                         <outlet property="imageDetailView" destination="88f-26-M4q" id="qqK-6o-ORz"/>
-                        <outlet property="shareButton" destination="WjN-0l-OnF" id="Sil-eT-jUn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="goc-5E-ixX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -364,6 +370,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="arrow.left" catalog="system" width="64" height="48"/>
         <image name="camera.fill" catalog="system" width="64" height="48"/>
         <image name="line.horizontal.3" catalog="system" width="64" height="32"/>
         <image name="plus" catalog="system" width="64" height="56"/>
