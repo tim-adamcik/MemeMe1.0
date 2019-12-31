@@ -51,9 +51,9 @@ class SentMemeTableViewController: UIViewController, UITableViewDelegate, UITabl
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let memeDetailNC = self.storyboard?.instantiateViewController(identifier: "MemeDetailNC") as? UINavigationController {
-            memeDetailNC.modalPresentationStyle = .fullScreen
-            present(memeDetailNC, animated: false, completion: nil)
+        if let memeDetailVC = self.storyboard?.instantiateViewController(identifier: "MemeDetailVC") as? MemeDetailVC {
+            memeDetailVC.meme = memes[indexPath.row]
+            navigationController?.pushViewController(memeDetailVC, animated: true)
         }
     }
     

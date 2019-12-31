@@ -11,22 +11,20 @@ import UIKit
 
 class MemeDetailVC: UIViewController {
     
+    var meme: Meme!
+    
     @IBOutlet weak var imageDetailView: UIImageView!
     
-    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        imageDetailView.image = meme.memedImage
+    }
     
     @IBAction func sendMemeDetail(_ sender: Any) {
         
         
-        let controller = UIActivityViewController
         
     }
     
-    @IBAction func backButton(_ sender: Any) {
-        if let tabVC = self.storyboard?.instantiateViewController(withIdentifier: "TabVC") as? UITabBarController {
-        tabVC.modalPresentationStyle = .fullScreen
-        present(tabVC, animated: false, completion: nil)
-        }
-    }
     
 }
