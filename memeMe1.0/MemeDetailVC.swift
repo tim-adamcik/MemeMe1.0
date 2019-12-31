@@ -22,7 +22,10 @@ class MemeDetailVC: UIViewController {
     
     @IBAction func sendMemeDetail(_ sender: Any) {
         
-        
+        let memeDetail = imageDetailView.image
+        let controller = UIActivityViewController(activityItems: [memeDetail],
+        applicationActivities: nil)
+        present(controller, animated: true, completion: nil)
         
     }
     
